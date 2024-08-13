@@ -5,7 +5,7 @@ class Config:
     ### Global config
     AUTHOR = None
     TORCH_DEVICE = 'cuda' # 'cpu' if no GPU is available, 'mps' for Apple silicon
-    OUTPUT_DIR = '/content/drive/MyDrive/ARCH393/Workshop/DiffusionModels/Outputs'
+    OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
     TIME_ZONE = -4 # Relative to UTC time
     ALGO_TYPE = None
     ALGO_NAME = None
@@ -34,7 +34,7 @@ class Config:
     TXT_COLOR_MID = 'gray'
     TXT_FONT_SIZE = 44
     TXT_MAX_LINELENGTH = 46
-    TXT_FONT = "Fira Sans" # "Courier New"
+    TXT_FONT = "Futura" # 
 
     def check():
       settings_to_check = [
