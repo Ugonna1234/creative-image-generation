@@ -1,13 +1,14 @@
 def get_config_property(prop_name):
     return getattr(Config, prop_name, None)
 
+
 class Config:
     ### Global config
     AUTHOR = None
-    TORCH_DEVICE = 'cuda' # 'cpu' if no GPU is available
+    TORCH_DEVICE = 'cuda'  # 'cpu' if no GPU is available
     OUTPUT_DIR = None  # Set to None by default; users will provide their own
 
-    TIME_ZONE = -4 # Relative to UTC time
+    TIME_ZONE = -4  # Relative to UTC time
     ALGO_TYPE = None
     ALGO_NAME = None
 
@@ -35,7 +36,7 @@ class Config:
     TXT_COLOR_MID = 'gray'
     TXT_FONT_SIZE = 44
     TXT_MAX_LINELENGTH = 46
-    TXT_FONT = "Futura" # 
+    TXT_FONT = "Futura"
 
     @staticmethod
     def check():
@@ -53,14 +54,15 @@ class Config:
         print('Config OK.')
 
     @staticmethod
-    def set_output_dir():
-        # Check if the user provides a directory path
-        user_dir = input("Enter the directory path to save outputs (or press Enter to use default): ").strip()
-        if user_dir:
-            Config.OUTPUT_DIR = user_dir
+    def set_output_dir(custom_output_dir=None):
+        if custom_output_dir:
+            Config.OUTPUT_DIR = custom_output_dir
         else:
-            # Set to default directory if user input is empty
-            Config.OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
+            user_dir = input("Enter the directory path to save outputs (or press Enter to use default): ").strip()
+            if user_dir:
+                Config.OUTPUT_DIR = user_dir
+            else:
+                Config.OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
         print(f"Output directory set to: {Config.OUTPUT_DIR}")
 
     @staticmethod
