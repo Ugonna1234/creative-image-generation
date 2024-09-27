@@ -4,8 +4,8 @@ def get_config_property(prop_name):
 class Config:
     ### Global config
     AUTHOR = None
-    TORCH_DEVICE = 'cuda' # 'cpu' if no GPU is available, 'mps' for Apple silicon
-    OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
+    TORCH_DEVICE = 'cuda' # 'cpu' if no GPU is available
+    # OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
     TIME_ZONE = -4 # Relative to UTC time
     ALGO_TYPE = None
     ALGO_NAME = None
@@ -42,6 +42,7 @@ class Config:
          'AUTHOR',
          'ALGO_TYPE',
          'ALGO_NAME',
+         'OUTPUT_DIR',
       ]
       for prop_name in settings_to_check:
         prop = get_config_property(prop_name)
