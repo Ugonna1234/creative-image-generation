@@ -5,7 +5,8 @@ class Config:
     ### Global config
     AUTHOR = None
     TORCH_DEVICE = 'cuda' # 'cpu' if no GPU is available
-    # OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
+    OUTPUT_DIR = None  # Set to None by default; users will provide their own
+
     TIME_ZONE = -4 # Relative to UTC time
     ALGO_TYPE = None
     ALGO_NAME = None
@@ -36,20 +37,33 @@ class Config:
     TXT_MAX_LINELENGTH = 46
     TXT_FONT = "Futura" # 
 
+    @staticmethod
     def check():
-      settings_to_check = [
-         'PROMPT',
-         'AUTHOR',
-         'ALGO_TYPE',
-         'ALGO_NAME',
-         'OUTPUT_DIR',
-      ]
-      for prop_name in settings_to_check:
-        prop = get_config_property(prop_name)
-        if prop is None:
-          raise Exception(f'Config.{prop_name} needs to be set.')
-      print('Config OK.')
+        settings_to_check = [
+            'PROMPT',
+            'AUTHOR',
+            'ALGO_TYPE',
+            'ALGO_NAME',
+            'OUTPUT_DIR'
+        ]
+        for prop_name in settings_to_check:
+            prop = get_config_property(prop_name)
+            if prop is None:
+                raise Exception(f'Config.{prop_name} needs to be set.')
+        print('Config OK.')
 
+    @staticmethod
+    def set_output_dir():
+        # Check if the user provides a directory path
+        user_dir = input("Enter the directory path to save outputs (or press Enter to use default): ").strip()
+        if user_dir:
+            Config.OUTPUT_DIR = user_dir
+        else:
+            # Set to default directory if user input is empty
+            Config.OUTPUT_DIR = '/content/drive/MyDrive/ARCH 393 UW/Workshop/Diffusion Models/Outputs'
+        print(f"Output directory set to: {Config.OUTPUT_DIR}")
+
+    @staticmethod
     def to_dict():
         return {
             'output_dir': Config.OUTPUT_DIR,
